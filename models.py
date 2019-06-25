@@ -36,20 +36,30 @@ class BaseModel(nn.Module):
 class LazyNet(BaseModel):
     def __init__(self):
         super(LazyNet, self).__init__()
-        # TODO: Define model here
+        self.fc1 = nn.Linear(32*32*3,10)
 
     def forward(self, x):
-        # TODO: Implement forward pass for LazyNet
+        #Flatten the image to 32*32*3
+        x = x.view(-1, 32*32*3)
+        # forward pass
+        x = self.fc1(x)
         return x
         
 
 class BoringNet(BaseModel):
     def __init__(self):
         super(BoringNet, self).__init__()
-        # TODO: Define model here
+        self.fc1 = nn.Linear(32*32*3,120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
 
     def forward(self, x):
-        # TODO: Implement forward pass for BoringNet
+        #Flatten the image to 32*32*3
+        x = x.view(-1, 32*32*3)
+        # forward pass
+        x = self.fc1(x)
+        x = self.fc2(x)
+        x = self.fc3(x)
         return x
 
 

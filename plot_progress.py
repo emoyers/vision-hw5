@@ -24,8 +24,8 @@ def main():
 				test_accuracy.append(float(line[:-1].split(' ')[-2]))
 
 	
-	plt.plot(train_accuracy)
-	plt.plot(test_accuracy)
+	plt.plot(train_accuracy, 'b')
+	plt.plot(test_accuracy, 'r')
 	plt.show()
 	plt.plot(train_loss)
 	plt.show()
